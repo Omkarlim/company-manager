@@ -1,0 +1,51 @@
+@import "bulma";
+@import "bulma-list/css/bulma-list.css";
+@import "remixicon/fonts/remixicon.css";
+@import "bulma-tooltip/src/sass/index.sass";
+@import 'vue-multiselect/dist/vue-multiselect.min.css';
+
+.modal-card {
+  width: 50%;
+}
+
+.menu-item-name {
+  font-size: 20px;
+  color: #575962;
+  margin-left: 5px;
+}
+
+.tab-item {
+  height: 50px;
+  width: 100%;
+  padding-top: 4px;
+  padding-left: 14px;
+  padding-bottom: 4px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  z-index: 999;
+}
+
+.active-tab {
+  background-color: #e6e6e6;
+  border-left: 4px solid #3498db;
+}
+
+.active-tab .menu-item-name {
+  color: black;
+}
+
+.active-tab .menu-icon {
+  color: #9bcdee;
+  margin-left: 18px;
+}
+
+.tab-item:hover {
+  background-color: #c7d3e0;
+  border-left: 4px solid #3498db;
+}
+
+.employee-card:hover {
+  background-color: #b1ffbb2a;
+  border-left: 4px solid rgb(52, 219, 60);
+}
