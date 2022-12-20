@@ -50,5 +50,5 @@ module.exports.globals = {
 
   sails: true,
   GEOCATCH_API_KEY: GEOCATCH_API_KEY,
-  GOOGLE_API_KEY:GOOGLE_API_KEY
+  GOOGLE_API_KEY: GOOGLE_API_KEY
 };

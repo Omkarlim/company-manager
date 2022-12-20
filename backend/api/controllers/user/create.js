@@ -29,7 +29,7 @@ module.exports = {
       description: 'Designation',
       type: 'string',
     },
-    dob:{
+    dob: {
       description: 'Date of Birth',
       type: 'string',
       required: true
@@ -62,7 +62,7 @@ module.exports = {
   },
 
 
-  fn: async function ({firstName, lastName, email, designation, dob, company}) {
+  fn: async function ({ firstName, lastName, email, designation, dob, company }) {
     var toCreate = {
       firstName,
       lastName,
@@ -71,7 +71,7 @@ module.exports = {
       dob: moment(dob, 'DD-MM-YYYY').toDate(),
       isActive: true,
     };
-    if(company){
+    if (company) {
       var query = {
         id: company,
         deleted: { '!=': true }
@@ -80,7 +80,7 @@ module.exports = {
       if (!companyRecord) { throw 'invalid'; }
       toCreate.company = company;
     }
-    await Employee.create(toCreate).intercept('E_UNIQUE', ()=>{
+    await Employee.create(toCreate).intercept('E_UNIQUE', () => {
       return 'emailAlreadyInUse';
     });
     return {

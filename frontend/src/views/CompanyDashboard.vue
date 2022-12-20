@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CompaniesListComponent ></CompaniesListComponent>
+    <CompaniesListComponent></CompaniesListComponent>
   </div>
 </template>
 <script>

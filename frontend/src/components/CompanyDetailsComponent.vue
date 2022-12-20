@@ -38,8 +38,8 @@ export default {
     companyLocation() {
       return this.companyDetails.coordinates || '';
     },
-    location(){
-      let baseUrl =`https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=${this.companyLocation || this.companyName || this.companyAddress}`
+    location() {
+      let baseUrl = `https://www.google.com/maps/embed/v1/place?key=${this.apiKey}&q=${this.companyLocation || this.companyName || this.companyAddress}`
       return baseUrl;
     }
   }

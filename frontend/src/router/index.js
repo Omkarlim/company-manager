@@ -8,7 +8,7 @@ var routes = [
     path: '/companies',
     name: 'Company Dashboard',
     component: () => import('../views/CompanyDashboard.vue')
-  },{
+  }, {
     path: '/employees',
     name: 'Employee Dashboard',
     component: () => import('../views/EmployeeDashboard.vue')

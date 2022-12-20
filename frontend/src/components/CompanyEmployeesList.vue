@@ -12,7 +12,7 @@
           style="margin-right:5px">
           Link Employee
         </button>
-        
+
       </div>
       <div class="column is-12 is-fullwidth">
         <label class="checkbox">
@@ -48,7 +48,7 @@
 
 <script>
 import _ from 'lodash';
-import {EventBus} from '../plugins/eventBus'
+import { EventBus } from '../plugins/eventBus'
 
 import EmployeeListItem from './EmployeeListItem.vue';
 import AddEditEmployee from '../components/AddEditEmployee.vue';
@@ -78,8 +78,8 @@ export default {
       allEmployees: []
     }
   },
-  watch:{
-    showArchived(){
+  watch: {
+    showArchived() {
       this.fetchCompanyEmployees()
     }
   },
@@ -126,13 +126,13 @@ export default {
     },
     async linkEmployees() {
       let url = '/company/link/' + this.companyId
-      let employeesToLink = _.map(this.employeesToLink, (val)=> val.id)
+      let employeesToLink = _.map(this.employeesToLink, (val) => val.id)
       try {
-        var response =  await this.$http.put(url,{employeeIds :employeesToLink})
+        var response = await this.$http.put(url, { employeeIds: employeesToLink })
         this.$toast.success(response.data.message)
         this.showLinkModal = false
         this.fetchCompanyEmployees()
-      }catch(err){
+      } catch (err) {
         console.log(err)
       }
     }

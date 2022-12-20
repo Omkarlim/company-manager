@@ -29,7 +29,6 @@ module.exports = {
 
 
   fn: async function ({ id }) {
-
     // All done.
     var companyRecord = await Company.findOne({
       id,

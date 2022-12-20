@@ -14,9 +14,8 @@
           <div class="field-body">
             <div class="field">
               <p class="control">
-                <input class="input" :class="validationErrors.firstName ? 'is-danger' : ''"
-                type="text" name="name" placeholder="First Name"
-                  v-model="employeeObject.firstName">
+                <input class="input" :class="validationErrors.firstName ? 'is-danger' : ''" type="text" name="name"
+                  placeholder="First Name" v-model="employeeObject.firstName">
               </p>
             </div>
           </div>
@@ -41,7 +40,7 @@
             <div class="field">
               <p class="control">
                 <Datepicker type="date" :input-class="validationErrors.dob ? 'input is-danger' : 'input'"
-                 v-model="employeeObject.dob"></Datepicker>
+                  v-model="employeeObject.dob"></Datepicker>
               </p>
             </div>
           </div>
@@ -66,9 +65,8 @@
           <div class="field-body">
             <div class="field">
               <p class="control">
-                <input class="input" :disabled="isEdit"
-                :class="{'is-danger': validationErrors.email}" type="text" name="name"
-                  placeholder="Email Id" v-model="employeeObject.email">
+                <input class="input" :disabled="isEdit" :class="{ 'is-danger': validationErrors.email }" type="text"
+                  name="name" placeholder="Email Id" v-model="employeeObject.email">
               </p>
             </div>
           </div>
@@ -114,7 +112,6 @@ export default {
     if (this.employee && this.employee.id) {
       this.isEdit = true
       this.employeeObject = JSON.parse(JSON.stringify(this.employee))
-      this.employeeObject.dob = moment(this.employeeObject.dob)
     }
   },
   methods: {
@@ -124,13 +121,14 @@ export default {
         this.$toast.error("First Name is required.")
         return;
       }
-      if (!email) {
-        this.$toast.error("Email is required.")
+      if (!email || this.validationErrors.email) {
+        this.$toast.error("Please Enter Proper Email.")
         return;
       }
       try {
         dob = new moment(new Date(dob)).format('DD-MM-YYYY')
-      }catch(err){
+      } catch (err) {
+        this.validationErrors.date = true;
         this.$toast.error("Invalid Date Selected.")
         return;
       }
@@ -154,9 +152,9 @@ export default {
         EventBus.$emit('closeEmployeeModal')
         EventBus.$emit('userUpdated')
       } catch (error) {
-        if(error.response.status == 409){
+        if (error.response.status == 409) {
           this.$toast.error("User with email already exists.")
-        }else {
+        } else {
           this.$toast.error("A problem occured.")
         }
         console.log(error)

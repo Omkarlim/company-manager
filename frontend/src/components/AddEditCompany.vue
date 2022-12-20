@@ -40,7 +40,7 @@
   </div>
 </template>
 <script>
-import {EventBus} from "../plugins/eventBus";
+import { EventBus } from "../plugins/eventBus";
 
 export default {
   name: 'AddEditCompany',
@@ -69,7 +69,7 @@ export default {
         if (this.isEdit) {
           response = await this.$http.put('/company/' + this.companyObject.id, params)
         } else {
-          response= await this.$http.post('/company', params)
+          response = await this.$http.post('/company', params)
         }
         this.$toast.success(response.data.message)
         EventBus.$emit('closeCompanyModal')

@@ -19,7 +19,7 @@
 <script>
 import CompanyItemComponentVue from './CompanyItemComponent.vue';
 import AddEditCompanyComponent from "./AddEditCompany.vue";
-import {EventBus} from "../plugins/eventBus";
+import { EventBus } from "../plugins/eventBus";
 
 
 export default {

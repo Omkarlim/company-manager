@@ -4,12 +4,14 @@
       <header class="card-header">
         <p class="card-header-title company-name" v-html="company.name" @click="openDetailsPage()">
         </p>
-        <button class="card-header-icon has-text-link has-tooltip-top " data-tooltip="Edit Company" aria-label="Edit Company" @click="toggleNewCompanyModal()">
-          <span class="icon " >
+        <button class="card-header-icon has-text-link has-tooltip-top " data-tooltip="Edit Company"
+          aria-label="Edit Company" @click="toggleNewCompanyModal()">
+          <span class="icon ">
             <i class="ri-edit-box-line"></i>
           </span>
         </button>
-        <button class="card-header-icon has-text-danger has-tooltip-top " data-tooltip="Delete Company" aria-label="more options" @click="deleteCompany()">
+        <button class="card-header-icon has-text-danger has-tooltip-top " data-tooltip="Delete Company"
+          aria-label="more options" @click="deleteCompany()">
           <span class="icon ">
             <i class="ri-delete-bin-line "></i>
           </span>
@@ -26,14 +28,14 @@
 </template>
 <script>
 import AddEditCompanyComponent from './AddEditCompany.vue'
-import {EventBus} from "../plugins/eventBus";
+import { EventBus } from "../plugins/eventBus";
 
 export default {
   name: 'CompanyItemComponent',
   props: {
     company: Object
   },
-  components:{
+  components: {
     AddEditCompanyComponent
   },
   data() {
@@ -76,6 +78,7 @@ export default {
 .company-name {
   cursor: pointer;
 }
+
 .card {
   margin-bottom: 10px;
   background-color: rgb(233, 240, 255)

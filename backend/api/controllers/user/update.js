@@ -28,7 +28,7 @@ module.exports = {
       description: 'Designation',
       type: 'string',
     },
-    dob:{
+    dob: {
       description: 'Date of Birth',
       type: 'string',
     },
@@ -50,12 +50,12 @@ module.exports = {
   },
 
 
-  fn: async function ({id, firstName, lastName, email, designation, dob, isActive}) {
+  fn: async function ({ id, firstName, lastName, email, designation, dob, isActive }) {
     var employeeRecord = await Employee.findOne({
       id,
       deleted: { '!=': true }
     });
-    if(!employeeRecord){ throw 'badRequest';}
+    if (!employeeRecord) { throw 'badRequest'; }
 
     await Employee.updateOne({ id }).set({
       firstName,

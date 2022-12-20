@@ -18,7 +18,7 @@
 export default {
   name: 'SideNavBar',
   methods: {
-    navigateTo(url){
+    navigateTo(url) {
       this.$router.push(url)
     }
   }

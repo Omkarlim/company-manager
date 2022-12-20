@@ -20,10 +20,10 @@ module.exports = {
       description: 'Limit no of results',
       type: 'number'
     },
-    skipCompany:{
-      type:'string'
+    skipCompany: {
+      type: 'string'
     },
-    archived:{
+    archived: {
       type: 'boolean'
     }
   },
@@ -42,18 +42,18 @@ module.exports = {
     }
   },
 
-  fn: async function ({ company, skip, limit, skipCompany, archived}) {
+  fn: async function ({ company, skip, limit, skipCompany, archived }) {
     var findQuery = {
       isActive: true,
       deleted: { '!=': true }
     };
-    if(archived){
+    if (archived) {
       findQuery.isActive = false;
     }
     skip = skip || 0;
     limit = limit || 10;
-    if(skipCompany){
-      findQuery.company = {'!=': skipCompany};
+    if (skipCompany) {
+      findQuery.company = { '!=': skipCompany };
       let response = await Employee.find(findQuery).sort('firstName ASC').populate('company');
       return { results: response };
     }

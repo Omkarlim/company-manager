@@ -25,7 +25,7 @@ module.exports = {
       id,
       deleted: { '!=': true }
     });
-    if(!employeeRecord){ throw 'badRequest';}
+    if (!employeeRecord) { throw 'badRequest'; }
     return employeeRecord;
   }
 

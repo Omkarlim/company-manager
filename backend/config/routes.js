@@ -22,14 +22,14 @@ var routeMap = {
   'POST /<V>/company': { action: 'company/create' },
   'PUT /<V>/company/:id': { action: 'company/update' },
   'DELETE /<V>/company/:id': { action: 'company/delete' },
-  'PUT /<V>/company/link/:id': {action: 'company/link-users' },
+  'PUT /<V>/company/link/:id': { action: 'company/link-users' },
 
   // APIs for Users
   // 'GET /<V>/user/:id': 'UserController.find',
-  'GET /<V>/user' : { action: 'user/find-all' },
+  'GET /<V>/user': { action: 'user/find-all' },
   'POST /<V>/user': { action: 'user/create' },
   'PUT /<V>/user/:id': { action: 'user/update' },
-  'PUT /<V>/user/unlink/:id': {action: 'user/unlink-users' },
+  'PUT /<V>/user/unlink/:id': { action: 'user/unlink-users' },
   'DELETE /<V>/user/:id': { action: 'user/delete' },
 
 };

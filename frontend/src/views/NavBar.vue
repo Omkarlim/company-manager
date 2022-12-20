@@ -3,7 +3,7 @@
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/home">
-          <h1 class="title" style="color:white"> 
+          <h1 class="title" style="color:white">
             CompManger
           </h1>
         </a>

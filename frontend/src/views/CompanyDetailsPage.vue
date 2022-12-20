@@ -11,7 +11,7 @@
 </template>
 <script>
 // import _ from 'lodash';
-import CompanyDetailsComponent from  '../components/CompanyDetailsComponent.vue'
+import CompanyDetailsComponent from '../components/CompanyDetailsComponent.vue'
 import CompanyEmployeesList from '../components/CompanyEmployeesList.vue';
 
 export default {
@@ -22,11 +22,11 @@ export default {
       options: {},
       companyDetails: {},
       companyEmployees: [],
-      apiKey:'',
+      apiKey: '',
       isLoading: true
     }
   },
-  components:{
+  components: {
     CompanyDetailsComponent,
     CompanyEmployeesList
   },
@@ -43,10 +43,10 @@ export default {
     },
   },
   mounted() {
-    this.isLoading=  true
+    this.isLoading = true
     this.options = this.$route.params;
     this.fetchCompany()
-    this.isLoading= false
+    this.isLoading = false
   }
 
 }
