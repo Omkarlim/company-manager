@@ -1,6 +1,7 @@
 # company-manager
 A simple Company Management System using Node.js, Sails.js and Vue.js
 
+[Watch Demo Video](https://youtu.be/o5Jvn7Ez4mI)
 ## Getting Started
 
 Install Node, Mongodb and NPM.
