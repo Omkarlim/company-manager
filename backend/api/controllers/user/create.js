@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 module.exports = {
 
 
@@ -20,12 +22,12 @@ module.exports = {
     email: {
       description: 'Email',
       type: 'string',
-      required: true
+      required: true,
+      isEmail: true,
     },
     designation: {
       description: 'Designation',
       type: 'string',
-      required: true
     },
     dob:{
       description: 'Date of Birth',
@@ -43,16 +45,20 @@ module.exports = {
     success: {
       description: 'New User was created successfully.'
     },
-    invalid: {
-      responseType: 'badRequest',
-      description: 'The provided name, address, email, designation and/or dob are invalid.',
-      extendedDescription: 'If this request was sent from a graphical user interface, the request ' +
-        'parameters should have been validated/coerced _before_ they were sent.'
+    emailAlreadyInUse: {
+      statusCode: 409,
+      description: 'The provided email address is already in use.',
     },
+    // invalid: {
+    //   responseType: 'badRequest',
+    //   description: 'The provided name, address, email, designation and/or dob are invalid.',
+    //   extendedDescription: 'If this request was sent from a graphical user interface, the request ' +
+    //     'parameters should have been validated/coerced _before_ they were sent.'
+    // },
     error: {
       responseType: 'serverError',
       description: 'Could\'nt Create the User',
-    }
+    },
   },
 
 
@@ -62,7 +68,7 @@ module.exports = {
       lastName,
       email,
       designation,
-      dob,
+      dob: moment(dob, 'DD-MM-YYYY').toDate(),
       isActive: true,
     };
     if(company){
@@ -74,12 +80,9 @@ module.exports = {
       if (!companyRecord) { throw 'invalid'; }
       toCreate.company = company;
     }
-    try{
-      await Employee.create(toCreate);
-    } catch(err){
-      console.log(err);
-      throw 'error';
-    }
+    await Employee.create(toCreate).intercept('E_UNIQUE', ()=>{
+      return 'emailAlreadyInUse';
+    });
     return {
       message: 'User Created Successfully.',
       status: 200,

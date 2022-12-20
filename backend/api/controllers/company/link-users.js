@@ -37,7 +37,6 @@ module.exports = {
       deleted: { '!=': true }
     });
     if (!employeeRecord) { throw 'invalid'; }
-    console.log(employeeRecord);
     var newCompanyRecord = await Company.findOne({
       id,
       deleted: { '!=': true }

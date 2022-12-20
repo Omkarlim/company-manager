@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 Vue.prototype.$http = axios;
 Vue.use(VueToast, {
   position: 'bottom',
-  duration: 5000,
+  duration: 500,
   dismissible: true,
 });
 

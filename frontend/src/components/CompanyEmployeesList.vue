@@ -12,6 +12,13 @@
           style="margin-right:5px">
           Link Employee
         </button>
+        
+      </div>
+      <div class="column is-12 is-fullwidth">
+        <label class="checkbox">
+          <input type="checkbox" v-model="showArchived">
+          Only Show Archived Employees
+        </label>
       </div>
       <span class="column is-6" v-for="employee in employees" :key="employee.id">
         <EmployeeListItem :employee="employee" :showCompany="showCompany" @userDeleted="fetchCompanyEmployees()"
@@ -66,8 +73,14 @@ export default {
       employees: [],
       showCreateModal: false,
       showLinkModal: false,
+      showArchived: false,
       employeesToLink: '',
       allEmployees: []
+    }
+  },
+  watch:{
+    showArchived(){
+      this.fetchCompanyEmployees()
     }
   },
   methods: {
@@ -94,7 +107,8 @@ export default {
       let params = {
         skip: this.skip,
         limit: this.limit,
-        company: this.companyId
+        company: this.companyId,
+        archived: this.showArchived
       }
       try {
         var response = await this.$http.get('/user', { params: params })

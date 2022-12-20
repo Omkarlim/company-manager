@@ -15,7 +15,11 @@ module.exports = {
       type: 'string'
     },
     email: {
-      type: 'string'
+      type: 'string',
+      unique: true,
+      isEmail: true,
+      maxLength: 200,
+      example: 'mary.sue@example.com'
     },
     designation: {
       type: 'string'

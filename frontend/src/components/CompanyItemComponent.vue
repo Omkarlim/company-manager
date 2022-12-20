@@ -9,7 +9,7 @@
             <i class="ri-edit-box-line"></i>
           </span>
         </button>
-        <button class="card-header-icon has-text-danger" aria-label="more options" @click="deleteCompany()">
+        <button class="card-header-icon has-text-danger has-tooltip-top " data-tooltip="Delete Company" aria-label="more options" @click="deleteCompany()">
           <span class="icon ">
             <i class="ri-delete-bin-line "></i>
           </span>

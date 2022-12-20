@@ -34,7 +34,7 @@
             Designation : {{ employee.designation | capitalize }}
           </p>
           <p>
-            Date Of Birth: {{ employee.dob }}
+            Date Of Birth: {{ employee.dob | formatDate }}
           </p>
         </div>
       </div>
@@ -46,7 +46,7 @@
 <script>
 import AddEditEmployee from '../components/AddEditEmployee.vue';
 import {EventBus} from '../plugins/eventBus'
-
+import moment from 'moment';
 
 export default {
   name: 'EmployeesListItem',
@@ -81,6 +81,9 @@ export default {
       if (!value) return ''
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
+    },
+    formatDate(val){
+      return moment(new Date(val)).format('DD MMM YYYY')
     }
   },
   methods:{

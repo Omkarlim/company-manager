@@ -27,7 +27,6 @@ module.exports = {
 
 
   fn: async function ({ id }) {
-    console.log('UNLINK');
     var employeeRecord = await Employee.findOne({
       id,
       deleted: { '!=': true }

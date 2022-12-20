@@ -22,6 +22,9 @@ module.exports = {
     },
     skipCompany:{
       type:'string'
+    },
+    archived:{
+      type: 'boolean'
     }
   },
   exits: {
@@ -39,16 +42,19 @@ module.exports = {
     }
   },
 
-  fn: async function ({ company, skip, limit, skipCompany }) {
+  fn: async function ({ company, skip, limit, skipCompany, archived}) {
     var findQuery = {
       isActive: true,
       deleted: { '!=': true }
     };
+    if(archived){
+      findQuery.isActive = false;
+    }
     skip = skip || 0;
     limit = limit || 10;
     if(skipCompany){
       findQuery.company = {'!=': skipCompany};
-      let response = await Employee.find(findQuery).sort('firstName ASC');
+      let response = await Employee.find(findQuery).sort('firstName ASC').populate('company');
       return { results: response };
     }
     if (company) {
