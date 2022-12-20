@@ -133,6 +133,9 @@ export default {
         return;
       }
       let params = { firstName, lastName, email, designation, dob }
+      if(this.isEdit){
+        delete params.email
+      }
       try {
         let response;
         if (this.isEdit) {

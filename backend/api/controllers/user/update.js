@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 module.exports = {
 
 
@@ -50,21 +52,22 @@ module.exports = {
   },
 
 
-  fn: async function ({ id, firstName, lastName, email, designation, dob, isActive }) {
+  fn: async function ({ id, firstName, lastName, designation, dob, isActive }) {
     var employeeRecord = await Employee.findOne({
       id,
       deleted: { '!=': true }
     });
     if (!employeeRecord) { throw 'badRequest'; }
-
-    await Employee.updateOne({ id }).set({
+    var toSet = {
       firstName,
       lastName,
-      email,
       designation,
-      dob,
       isActive
-    });
+    };
+    if(dob){
+      toSet.dob = moment(dob, 'DD-MM-YYYY').toDate();
+    }
+    await Employee.updateOne({ id }).set(toSet);
     return {
       message: 'User Updated Successfully.',
       status: 200,
